@@ -31,7 +31,7 @@ class AppTheme with ChangeNotifier {
   static ThemeData darkTheme = ThemeData(
     fontFamily: GoogleFonts.rubik().fontFamily,
     primaryColor: Colors.black,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.black,
     ),
     canvasColor: Colors.black,

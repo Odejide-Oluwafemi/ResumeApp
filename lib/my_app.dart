@@ -4,6 +4,7 @@ import 'package:resume_app/misc/app_theme.dart';
 import 'package:resume_app/misc/config.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+// The base of our entire app
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -33,6 +34,7 @@ class _MyAppState extends State<MyApp> {
       theme: AppTheme.appTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: currentTheme.currentTheme(),
+      // The First Page loaded to the Screen
       home: const HomePage(),
     );
   }
