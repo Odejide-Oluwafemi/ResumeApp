@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     overview:
         "A Software Enthusiast with Strong passion for Video Game and Mobile Application Development. He has been in the Software field for more than 4 years. He is a Team Player with great communication skills. Outside of the Tech space, he is a Guitarist and during his spare time, he engages in 3D modelling (blender), Photo Editing/Image Manipulation (GIMP) and Music Production (FL Studio).",
     teamBenefit:
-        "I am Result Oriented, which means I seek to get the job done on Schedule and above minimal requirements. I am not Perfect but I am always Learning. Like I mentioned in the Overview Section, I've been in the Programming Field for 4+ years, most of which were dedicated to Game Development and Programming, and have tackled so many challenges and bugs. If you need an 'outta-the-box' thinker (with a touch of weirdness), I'm your guy.",
+        "I am Result Oriented, which means I seek to get the job done on Schedule and above minimal requirements. I am eager to learn and also a Fast Learner. Like I mentioned in the Overview Section, I've been in the Programming Field for 4+ years, most of which were dedicated to Game Development and Programming, and have tackled so many challenges and bugs. I will offer not only tech solutions but also Problem Solving, Creative Thinking as well as Innovation.",
     contacts: [
       ContactModel(
         name: "FACEBOOK",

@@ -59,7 +59,11 @@ class OverviewPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  maxRadius: 150,
+                  maxRadius: MediaQuery.of(context).orientation ==
+                              Orientation.landscape ||
+                          MediaQuery.of(context).size.width > 720
+                      ? 70
+                      : 130,
                   backgroundImage: AssetImage(profileImagePath!),
                   child: profileImagePath != null
                       ? Container()

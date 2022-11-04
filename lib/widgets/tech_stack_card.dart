@@ -16,13 +16,13 @@ class TechStackCard extends StatelessWidget {
         runAlignment: WrapAlignment.spaceEvenly,
         children: [
           Container(
-            width: 32,
-            height: 32,
+            width: 48,
+            height: 48,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
                 image: AssetImage(model.imagePath),
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ),
             ),
           ),

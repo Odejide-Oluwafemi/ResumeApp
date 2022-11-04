@@ -5,8 +5,8 @@ import 'package:resume_app/widgets/app_text.dart';
 
 class ExperienceCard extends StatelessWidget {
   final ExperienceModel model;
-
-  const ExperienceCard(this.model, {super.key});
+  final Widget? bottomWidget;
+  const ExperienceCard(this.model, {super.key, this.bottomWidget});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -53,6 +53,7 @@ class ExperienceCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  const SizedBox(height: 4),
                   Container(
                     width: 200,
                     height: 2,
@@ -62,7 +63,7 @@ class ExperienceCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 16),
           Flexible(
             child: SingleChildScrollView(
               child: AppText(
@@ -70,6 +71,8 @@ class ExperienceCard extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 16),
+          bottomWidget!,
         ],
       ),
     );

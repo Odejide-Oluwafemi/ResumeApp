@@ -29,6 +29,14 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('en', 'UK'),
+        Locale('es', ''),
+        Locale('zh', ''),
+        Locale('he', 'IL'),
+      ],
+
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppTheme.appTheme,

@@ -36,9 +36,9 @@ class DetailsPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(
-              top: 20,
-              left: 20,
-              right: 20,
+              top: 15,
+              left: 8,
+              right: 8,
             ),
             child: Column(
               children: [
@@ -70,9 +70,9 @@ class DetailsPage extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: GridView.count(
                       scrollDirection: Axis.vertical,
-                      crossAxisCount: 5,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 15,
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 12,
                       children: List.generate(
                         user.skills.length,
                         (index) => TechStackCard(
@@ -93,15 +93,38 @@ class DetailsPage extends StatelessWidget {
                     height: 250,
                     child: PageView(
                       scrollDirection: Axis.horizontal,
-                      children: List.generate(
-                        user.experiences.length,
-                        (index) => ExperienceCard(
-                          user.experiences.elementAt(index),
-                        ),
-                      ),
+                      children:
+                          List.generate(user.experiences.length, (pageIndex) {
+                        return ExperienceCard(
+                          user.experiences.elementAt(pageIndex),
+                          bottomWidget: Center(
+                            child: Wrap(
+                              alignment: WrapAlignment.center,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              runAlignment: WrapAlignment.center,
+                              spacing: 8,
+                              children: List.generate(
+                                user.experiences.length,
+                                (index) => Container(
+                                  width: pageIndex == index ? 8 : 3,
+                                  height: pageIndex == index ? 8 : 3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall!
+                                        .color,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
                     ),
                   ),
                 ),
+
                 //WHAT DO I OFFER?
                 const SizedBox(height: 18),
                 headerWithDivider("WHAT DO I ADD TO THE COMPANY?"),
