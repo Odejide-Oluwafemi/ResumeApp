@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_app/misc/config.dart';
 import 'package:resume_app/models/contact_model.dart';
 import 'package:resume_app/models/experience_model.dart';
 import 'package:resume_app/models/skill_model.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  UserModel user = UserModel(
+  UserModel user = const UserModel(
     imagePath: "images/profile.jpg",
     firstName: "Oluwafemi",
     lastName: "Odejide",
@@ -88,7 +89,8 @@ class _HomePageState extends State<HomePage> {
       ),
       ExperienceModel(
         imagePath: "images/game1.png",
-        description: "A Flappy Bird clone made with Unity.",
+        description:
+            "A Flappy Bird clone made with Unity...that's basically it I guess",
         projectTitle: "Fluffy Jump",
       ),
       ExperienceModel(
@@ -139,34 +141,74 @@ class _HomePageState extends State<HomePage> {
       ),
     ],
   );
+
+  void nightTime() {
+    Future.delayed(
+      Duration(seconds: 3),
+      () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Auto Switch to dark mode from 6pm above"),
+          ),
+        );
+      },
+    );
+    DateTime nightTime = DateTime(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day, 18, 50);
+
+    Duration diff = nightTime.difference(DateTime.now());
+    //print(":::NIGHT TIME in ${diff.inHours}hours ${diff.inMinutes}minutes");
+
+    Future.delayed(
+      diff,
+      () {
+        //print(":::NIGHT TIME!!!");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Night Time! Switching to Dark Mode..."),
+          ),
+        );
+        currentTheme.setTheme(ThemeMode.dark);
+      },
+    );
+//    if (DateTime.now().isAfter(nightTime)) {}
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).orientation == Orientation.landscape
-        ? Row(
-            children: [
-              OverviewPage(
-                firstName: user.firstName,
-                lastName: user.lastName,
-                jobTitle: user.jobTitle,
-                profileImagePath: user.imagePath,
+    nightTime();
+    return Scaffold(
+      body: Container(
+        child: MediaQuery.of(context).orientation == Orientation.landscape ||
+                MediaQuery.of(context).size.width > 720
+            ? Row(
+                children: [
+                  Expanded(
+                    child: OverviewPage(
+                      firstName: user.firstName,
+                      lastName: user.lastName,
+                      jobTitle: user.jobTitle,
+                      profileImagePath: user.imagePath,
+                    ),
+                  ),
+                  Expanded(
+                    child: DetailsPage(user),
+                  ),
+                ],
+              )
+            : PageView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  OverviewPage(
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    jobTitle: user.jobTitle,
+                    profileImagePath: user.imagePath,
+                  ),
+                  DetailsPage(user),
+                ],
               ),
-              SizedBox(width: 3),
-              Expanded(
-                child: DetailsPage(user),
-              ),
-            ],
-          )
-        : PageView(
-            scrollDirection: Axis.vertical,
-            children: [
-              OverviewPage(
-                firstName: user.firstName,
-                lastName: user.lastName,
-                jobTitle: user.jobTitle,
-                profileImagePath: user.imagePath,
-              ),
-              DetailsPage(user),
-            ],
-          );
+      ),
+    );
   }
 }

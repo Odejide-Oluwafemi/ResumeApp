@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_app/misc/app_colors.dart';
 
 class AppText extends StatelessWidget {
   final String text;

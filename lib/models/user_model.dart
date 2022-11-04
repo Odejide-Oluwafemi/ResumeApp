@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:resume_app/models/contact_model.dart';
 import 'package:resume_app/models/experience_model.dart';
 import 'package:resume_app/models/skill_model.dart';

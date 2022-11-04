@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class ContactModel {
   final String name;
   final String? imagePath;

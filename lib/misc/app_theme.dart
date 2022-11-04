@@ -60,4 +60,13 @@ class AppTheme with ChangeNotifier {
     _isDark = !_isDark;
     notifyListeners();
   }
+
+  void setTheme(ThemeMode mode) {
+    if (mode == ThemeMode.dark) {
+      _isDark = true;
+    } else {
+      _isDark = false;
+    }
+    notifyListeners();
+  }
 }

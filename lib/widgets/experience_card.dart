@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:resume_app/misc/app_colors.dart';
 import 'package:resume_app/models/experience_model.dart';
 import 'package:resume_app/widgets/app_text.dart';
-import 'package:resume_app/widgets/main_text.dart';
 
 class ExperienceCard extends StatelessWidget {
   final ExperienceModel model;
 
-  ExperienceCard(this.model, {super.key});
+  const ExperienceCard(this.model, {super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -40,7 +39,7 @@ class ExperienceCard extends StatelessWidget {
                 backgroundImage: model.image.image,
                 child: model.image == null ? Icon(Icons.add) : Container(),
               ), */
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -63,7 +62,7 @@ class ExperienceCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Flexible(
             child: SingleChildScrollView(
               child: AppText(
