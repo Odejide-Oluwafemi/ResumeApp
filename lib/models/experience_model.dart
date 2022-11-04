@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class ExperienceModel {
   final String projectTitle;
   final String description;
-  final Image image;
+  final String? imagePath;
 
   const ExperienceModel({
-    required this.image,
+    this.imagePath,
     required this.description,
     required this.projectTitle,
   });

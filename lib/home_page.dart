@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   UserModel user = UserModel(
-    image: Image.asset("images/profile.jpg"),
+    imagePath: "images/profile.jpg",
     firstName: "Oluwafemi",
     lastName: "Odejide",
     jobTitle: "Software Developer",
@@ -26,79 +26,79 @@ class _HomePageState extends State<HomePage> {
     contacts: [
       ContactModel(
         name: "FACEBOOK",
-        url: "https://www.facebook.com/EliJah007",
+        url: "https://www.facebook.com/EliJah0O7",
         type: "web",
-        image: Image.asset("images/fb.png"),
+        imagePath: "images/fb.png",
       ),
       ContactModel(
         name: "GITHUB",
         url: "https://www.github.com/Odejide-Oluwafemi",
         type: "web",
-        image: Image.asset("images/github.png"),
+        imagePath: "images/github.png",
       ),
       ContactModel(
         name: "TWITTER",
         url: "https://www.twitter.com/Eli_Jah_007",
         type: "web",
-        image: Image.asset("images/twitter.png"),
+        imagePath: "images/twitter.png",
       ),
       ContactModel(
         name: "SMS",
         url: "+2348093486840",
         type: "sms",
-        image: Image.asset("images/sms.png"),
+        imagePath: "images/sms.png",
       ),
       ContactModel(
         name: "CALL",
         url: "+2348093486840",
         type: "tel",
-        image: Image.asset("images/phonecall.png"),
+        imagePath: "images/phonecall.png",
       ),
       ContactModel(
         name: "WHATSAPP",
         url: "+2348093486840",
         type: "tel",
-        image: Image.asset("images/whatsapp.png"),
+        imagePath: "images/whatsapp.png",
       ),
       ContactModel(
         name: "GMAIL",
         url: "oluwatosinodejide121@gmail.com",
         type: "mail",
-        image: Image.asset("images/gmail.png"),
+        imagePath: "images/gmail.png",
       ),
     ],
     experiences: [
       ExperienceModel(
-        image: Image.asset("images/game1.png"),
+        imagePath: "images/game1.png",
         description:
             "A 2D Open_World Space game where players battle with Spaceships to be the last Piloting Pilot (features a Fast-Paced, Intensive Combat System and a soon to be implemented Multiplayer Feature...hopefully). It was built with the Godot Game Engine",
         projectTitle: "Space Royale",
       ),
       ExperienceModel(
-        image: Image.asset("images/mobile.png"),
+        imagePath: "images/mobile.png",
         description:
             "A Simple app that displays a list of dishes based on the users' search input (features Authentication and API calls and responses)",
         projectTitle: "Dish Search App",
       ),
       ExperienceModel(
-        image: Image.asset("images/mobile.png"),
+        imagePath: "images/mobile.png",
         description:
             "A Simple app gets the weather condition of the users' search input (features API calls and responses)",
         projectTitle: "Weather Checker App",
       ),
       ExperienceModel(
-        image: Image.asset("images/game1.png"),
+        imagePath: "images/game1.png",
         description: "A Flappy Bird clone made with Unity.",
         projectTitle: "Fluffy Jump",
       ),
       ExperienceModel(
-        image: Image.asset("images/game1.png"),
+        imagePath: "images/game1.png",
         description:
             "A 2D Side Scrolling Game with Unity. All that is required of the player is to jump to avoid oncoming enemies from both sides. Easy right? Wrong!",
         projectTitle: "Monster Jump",
       ),
       ExperienceModel(
-        image: Image.asset("images/game1.png"),
+        imagePath: "images/game1.png",
         description:
             "A 2D Side Scrolling Game made with Godot. The player is required to control his ship to avoid oncoming asteroids or shoot to destroy them (features Persistence Storage).",
         projectTitle: "Asteroid Dodge",
@@ -106,35 +106,35 @@ class _HomePageState extends State<HomePage> {
     ],
     skills: [
       SkillModel(
-        image: Image.asset("images/flutter.png"),
+        imagePath: "images/flutter.png",
         name: "Flutter",
       ),
       SkillModel(
-        image: Image.asset("images/dart.png"),
+        imagePath: "images/dart.png",
         name: "Dart",
       ),
       SkillModel(
-        image: Image.asset("images/html.png"),
+        imagePath: "images/html.png",
         name: "HTML",
       ),
       SkillModel(
-        image: Image.asset("images/css.png"),
+        imagePath: "images/css.png",
         name: "CSS",
       ),
       SkillModel(
-        image: Image.asset("images/javascript.png"),
+        imagePath: "images/javascript.png",
         name: "JavaScript",
       ),
       SkillModel(
-        image: Image.asset("images/cplusplus.png"),
+        imagePath: "images/cplusplus.png",
         name: "C++",
       ),
       SkillModel(
-        image: Image.asset("images/godot.png"),
+        imagePath: "images/godot.png",
         name: "GODOT",
       ),
       SkillModel(
-        image: Image.asset("images/unity.png"),
+        imagePath: "images/unity.jpg",
         name: "Unity",
       ),
     ],
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 jobTitle: user.jobTitle,
-                profile: user.image,
+                profileImagePath: user.imagePath,
               ),
               SizedBox(width: 3),
               Expanded(
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 jobTitle: user.jobTitle,
-                profile: user.image,
+                profileImagePath: user.imagePath,
               ),
               DetailsPage(user),
             ],

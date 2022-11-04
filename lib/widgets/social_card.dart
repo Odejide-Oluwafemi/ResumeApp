@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_app/misc/app_colors.dart';
 import 'package:resume_app/models/contact_model.dart';
-import 'package:resume_app/widgets/app_text.dart';
+import 'package:resume_app/widgets/main_text.dart';
 
 class SocialCard extends StatelessWidget {
   final ContactModel model;
@@ -12,7 +12,6 @@ class SocialCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("Tapped from Class");
         onTap();
       },
       child: Container(
@@ -21,13 +20,22 @@ class SocialCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
-              width: 70,
-              height: 70,
+              width: 38,
+              height: 38,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: AppColors.appColor,
+                borderRadius: BorderRadius.circular(25),
+                image: DecorationImage(
+                  image: AssetImage(model.imagePath!),
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: model.image,
+              child: model.imagePath == null
+                  ? Icon(
+                      Icons.add,
+                      color: Theme.of(context).textTheme.labelLarge!.color,
+                      size: 22,
+                    )
+                  : Container(),
             ),
             Container(
               margin: const EdgeInsets.only(top: 3, bottom: 3),
@@ -35,7 +43,11 @@ class SocialCard extends StatelessWidget {
               width: 80,
               color: AppColors.appColor,
             ),
-            AppText(model.name),
+            MainText(
+              model.name,
+              size: 13,
+              fontWeight: FontWeight.w500,
+            ),
           ],
         ),
       ),

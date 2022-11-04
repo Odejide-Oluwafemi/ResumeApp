@@ -184,21 +184,21 @@ class DetailsPage extends StatelessWidget {
     );
   }
 
-  void launch(ContactModel model) async {
+  Future<void> launch(ContactModel model) async {
     print("LAUNCH INITIATED OOO!!!!");
     String? scheme;
     if (model.type.toLowerCase().contains('mail')) {
-      scheme = 'mailto';
+      scheme = 'mailto:';
     } else if (model.type.toLowerCase().contains('message') ||
         model.type.toLowerCase().contains('sms')) {
-      scheme = 'sms';
+      scheme = 'sms:';
     } else if (model.type.toLowerCase().contains('site') ||
         model.type.toLowerCase().contains('web')) {
       scheme = "";
     } else if (model.type.toLowerCase().contains('tel') ||
         (model.type.toLowerCase().contains('phone')) ||
         (model.type.toLowerCase().contains('call'))) {
-      scheme = "tel";
+      scheme = "tel:";
     } else {
       scheme = null;
     }
@@ -208,6 +208,11 @@ class DetailsPage extends StatelessWidget {
       throw Exception("Invalid Url! Check the Url and try again");
     }
 
+    final Uri url = Uri.parse(scheme + model.url);
+    if (!await Launcher.launchUrl(url)) {
+      throw "Error Ocurred while Launching";
+    }
+/* 
     final link = Uri(
       scheme: scheme,
       path: model.url,
@@ -220,6 +225,6 @@ class DetailsPage extends StatelessWidget {
     } else {
       print("ERROR OOO!!!!");
       throw Exception("An Error Occured! Check the Url and try again");
-    }
+    } */
   }
 }

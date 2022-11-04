@@ -17,11 +17,29 @@ class ExperienceCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
+              Container(
+                width: 28,
+                height: 28,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  image: DecorationImage(
+                    image: AssetImage(model.imagePath!),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: model.imagePath == null
+                    ? Icon(
+                        Icons.add,
+                        color: Theme.of(context).textTheme.labelLarge!.color,
+                        size: 22,
+                      )
+                    : Container(),
+              ),
+              /* CircleAvatar(
                 radius: 26,
                 backgroundImage: model.image.image,
                 child: model.image == null ? Icon(Icons.add) : Container(),
-              ),
+              ), */
               SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

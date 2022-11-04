@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class ContactModel {
   final String name;
-  final Image image;
+  final String? imagePath;
   final String url;
   final String type;
 
   const ContactModel({
     required this.name,
-    required this.image,
+    this.imagePath,
     required this.url,
     required this.type,
   });

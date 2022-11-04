@@ -4,7 +4,7 @@ import 'package:resume_app/models/experience_model.dart';
 import 'package:resume_app/models/skill_model.dart';
 
 class UserModel {
-  final Image? image;
+  final String? imagePath;
   final String lastName;
   final String firstName;
   final String jobTitle;
@@ -15,7 +15,7 @@ class UserModel {
   final List<ContactModel> contacts;
 
   const UserModel({
-    this.image,
+    this.imagePath,
     required this.lastName,
     required this.firstName,
     required this.jobTitle,

@@ -15,10 +15,22 @@ class TechStackCard extends StatelessWidget {
         alignment: WrapAlignment.center,
         runAlignment: WrapAlignment.spaceEvenly,
         children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundImage: model.image.image,
+          Container(
+            width: 32,
+            height: 32,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              image: DecorationImage(
+                image: AssetImage(model.imagePath),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
+          /* CircleAvatar(
+            radius: 25,
+            backgroundImage: AssetImage(model.imagePath,),
+
+          ), */
           Divider(
             color: AppColors.appColor,
             thickness: 2.7,

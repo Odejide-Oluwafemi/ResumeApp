@@ -6,14 +6,14 @@ import 'package:resume_app/widgets/app_text.dart';
 import 'package:resume_app/widgets/main_text.dart';
 
 class OverviewPage extends StatelessWidget {
-  final Image? profile;
+  final String? profileImagePath;
   final String jobTitle;
   final String lastName;
   final String firstName;
 
   const OverviewPage({
     super.key,
-    this.profile,
+    this.profileImagePath,
     required this.jobTitle,
     required this.lastName,
     required this.firstName,
@@ -62,8 +62,9 @@ class OverviewPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  maxRadius: 180,
-                  child: profile != null
+                  maxRadius: 150,
+                  backgroundImage: AssetImage(profileImagePath!),
+                  child: profileImagePath != null
                       ? Container()
                       : Icon(
                           Icons.person,
