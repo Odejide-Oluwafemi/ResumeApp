@@ -15,7 +15,7 @@ With more time, would have Implemented:
   Ability to Save and Download the Resume in pdf format.
   General Improvement on the UI and feel with more cooked Animations.
  
-APK download link:
+APK download link: https://drive.google.com/file/d/1-5dDaI--cch9n8rFIYF1utuSze6V_zwa/view?usp=drivesdk
 Apeetizeio link:
 
 2022, ElyteTechnologies.
