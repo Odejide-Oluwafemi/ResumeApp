@@ -9,13 +9,22 @@ import 'package:resume_app/widgets/social_card.dart';
 import 'package:resume_app/widgets/tech_stack_card.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
+/// Full User Info Page
 class DetailsPage extends StatelessWidget {
+  /// The [UserModel] containing the necessary information. See [UserModel].
   final UserModel user;
   const DetailsPage(this.user, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    Widget headerWithDivider(String headerText, {double size = 15}) {
+    /// Template for creating a Header Section
+    Widget headerWithDivider(
+      /// The Headers' Text
+      String headerText, {
+
+      /// Size of the [headerText]
+      double size = 15,
+    }) {
       return Column(
         children: [
           Center(child: MainText(headerText, size: size)),
@@ -31,181 +40,197 @@ class DetailsPage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: ListView(
-        scrollDirection: Axis.vertical,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 15,
-              left: 8,
-              right: 8,
-            ),
-            child: Column(
-              children: [
-                headerWithDivider("OVERVIEW"),
-                SizedBox(
-                  child: Card(
-                    margin: const EdgeInsets.all(3),
-                    elevation: 7,
-                    shadowColor: AppColors.appColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: AppText(
-                        user.overview,
-                        color: Colors.black87,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 18),
-                headerWithDivider("SKILLS"),
-                Card(
-                  margin: const EdgeInsets.all(3),
-                  elevation: 7,
-                  shadowColor: AppColors.appColor,
-                  child: Container(
-                    width: double.maxFinite,
-                    alignment: Alignment.center,
-                    height: 180,
-                    padding: const EdgeInsets.all(8),
-                    child: GridView.count(
-                      scrollDirection: Axis.vertical,
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 5,
-                      mainAxisSpacing: 12,
-                      children: List.generate(
-                        user.skills.length,
-                        (index) => TechStackCard(
-                          user.skills.elementAt(index),
+      body: Container(
+        margin: const EdgeInsets.only(top: 25),
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 15,
+                left: 20,
+                right: 20,
+              ),
+              child: Column(
+                children: [
+                  // Overview Section
+                  headerWithDivider("OVERVIEW"),
+                  SizedBox(
+                    child: Card(
+                      margin: const EdgeInsets.all(3),
+                      elevation: 7,
+                      shadowColor: AppColors.appColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: AppText(
+                          user.overview,
+                          color: Colors.black87,
                         ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 18),
-                headerWithDivider("EXPERIENCES/PROJECTS"),
-                Card(
-                  margin: const EdgeInsets.all(3),
-                  elevation: 7,
-                  shadowColor: AppColors.appColor,
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    height: 250,
-                    child: PageView(
-                      scrollDirection: Axis.horizontal,
-                      children:
-                          List.generate(user.experiences.length, (pageIndex) {
-                        return ExperienceCard(
-                          user.experiences.elementAt(pageIndex),
-                          bottomWidget: Center(
-                            child: Wrap(
-                              alignment: WrapAlignment.center,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              runAlignment: WrapAlignment.center,
-                              spacing: 8,
-                              children: List.generate(
-                                user.experiences.length,
-                                (index) => Container(
-                                  width: pageIndex == index ? 8 : 3,
-                                  height: pageIndex == index ? 8 : 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .labelSmall!
-                                        .color,
+                  const SizedBox(height: 18),
+
+                  // Skills Section
+                  headerWithDivider("SKILLS"),
+                  Card(
+                    margin: const EdgeInsets.all(3),
+                    elevation: 7,
+                    shadowColor: AppColors.appColor,
+                    child: Container(
+                      width: double.maxFinite,
+                      alignment: Alignment.center,
+                      height: 250,
+                      padding: const EdgeInsets.all(8),
+                      child: GridView.count(
+                        scrollDirection: Axis.vertical,
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 12,
+                        children: List.generate(
+                          user.skills.length,
+                          (index) => TechStackCard(
+                            user.skills.elementAt(index),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+
+                  // Experiences/Projects Section
+                  headerWithDivider("EXPERIENCES/PROJECTS"),
+                  Card(
+                    margin: const EdgeInsets.all(3),
+                    elevation: 7,
+                    shadowColor: AppColors.appColor,
+                    child: Container(
+                      padding: const EdgeInsets.all(12),
+                      height: 250,
+                      child: PageView(
+                        scrollDirection: Axis.horizontal,
+                        children:
+                            List.generate(user.experiences.length, (pageIndex) {
+                          return ExperienceCard(
+                            user.experiences.elementAt(pageIndex),
+                            bottomWidget: Center(
+                              child: Wrap(
+                                alignment: WrapAlignment.center,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                runAlignment: WrapAlignment.center,
+                                spacing: 8,
+                                children: List.generate(
+                                  user.experiences.length,
+                                  (index) => Container(
+                                    width: pageIndex == index ? 8 : 3,
+                                    height: pageIndex == index ? 8 : 3,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall!
+                                          .color,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                ),
-
-                //WHAT DO I OFFER?
-                const SizedBox(height: 18),
-                headerWithDivider("WHAT DO I ADD TO THE COMPANY?"),
-                SizedBox(
-                  child: Card(
-                    margin: const EdgeInsets.all(3),
-                    elevation: 7,
-                    shadowColor: AppColors.appColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: AppText(
-                        user.teamBenefit,
-                        color: Colors.black87,
+                          );
+                        }),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 18),
-                headerWithDivider("CONTACT ME"),
-                //CONTACT SECTION
-                Container(
-                  width: double.maxFinite,
-                  margin: const EdgeInsets.all(3),
-                  padding: const EdgeInsets.all(8),
-                  //height: 80,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: List.generate(
-                        user.contacts.length,
-                        (index) => SocialCard(
-                          user.contacts.elementAt(index),
-                          onTap: () {
-                            launch(
-                              context,
-                              user.contacts.elementAt(index),
-                            );
-                          },
+
+                  //WHAT DO I OFFER?
+                  const SizedBox(height: 18),
+                  headerWithDivider("WHAT DO I ADD TO THE COMPANY?"),
+                  SizedBox(
+                    child: Card(
+                      margin: const EdgeInsets.all(3),
+                      elevation: 7,
+                      shadowColor: AppColors.appColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: AppText(
+                          user.teamBenefit,
+                          color: Colors.black87,
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          //START
+                  const SizedBox(height: 18),
 
-          const SizedBox(height: 23),
-          //FOOTER
-          Container(
-            width: double.maxFinite,
-            height: 100,
-            decoration: BoxDecoration(
-              color: AppColors.appColor,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(100),
-                topRight: Radius.circular(100),
+                  //CONTACT SECTION
+                  headerWithDivider("CONTACT ME"),
+                  Container(
+                    width: double.maxFinite,
+                    margin: const EdgeInsets.all(3),
+                    padding: const EdgeInsets.all(8),
+                    //height: 80,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: List.generate(
+                          user.contacts.length,
+                          (index) => SocialCard(
+                            user.contacts.elementAt(index),
+                            onTap: () {
+                              launch(
+                                context,
+                                user.contacts.elementAt(index),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            child: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    MainText("RESUME APP", size: 26),
-                    MainText("2022, ElyteTechnologies", size: 18),
-                    //AppText("Resume App", size: 26, color: Colors.white),
-                    //AppText("2022, ElyteTechnologies", color: Colors.white),
-                  ]),
+            const SizedBox(height: 23),
+
+            //FOOTER
+            Container(
+              width: double.maxFinite,
+              height: 100,
+              decoration: BoxDecoration(
+                color: AppColors.appColor,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(100),
+                  topRight: Radius.circular(100),
+                ),
+              ),
+              child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      MainText("RESUME APP", size: 26),
+                      MainText("2022, ElyteTechnologies", size: 18),
+                      //AppText("Resume App", size: 26, color: Colors.white),
+                      //AppText("2022, ElyteTechnologies", color: Colors.white),
+                    ]),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
-  Future<void> launch(BuildContext context, ContactModel model) async {
+  /// Launching a URL
+  Future<void> launch(
+    /// The [BuildContext]
+    BuildContext context,
+
+    /// The [ContactModel] containing the required Contact details. See [ContactModel]
+    ContactModel model,
+  ) async {
     //print("LAUNCH INITIATED OOO!!!!");
+    /// The Scheme indicating the type of the URL
     String? scheme;
     if (model.type.toLowerCase().contains('mail')) {
       scheme = 'mailto:';
@@ -234,19 +259,5 @@ class DetailsPage extends StatelessWidget {
     if (!await url_launcher.launchUrl(url)) {
       throw "Error Ocurred while Launching";
     }
-/* 
-    final link = Uri(
-      scheme: scheme,
-      path: model.url,
-    );
-
-    if (await url_launcher.canLaunchUrl(link)) {
-      url_launcher.launchUrl(
-        link,
-      );
-    } else {
-      print("ERROR OOO!!!!");
-      throw Exception("An Error Occured! Check the Url and try again");
-    } */
   }
 }

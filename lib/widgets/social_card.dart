@@ -3,9 +3,14 @@ import 'package:resume_app/misc/app_colors.dart';
 import 'package:resume_app/models/contact_model.dart';
 import 'package:resume_app/widgets/main_text.dart';
 
+/// The Widget for users' contact handles
 class SocialCard extends StatelessWidget {
+  /// The [ContactModel] containing the contact details. See [ContactModel].
   final ContactModel model;
+
+  /// Callback to lauch the url and contact the contact, lol.
   final Function onTap;
+
   const SocialCard(this.model, {required this.onTap, super.key});
 
   @override

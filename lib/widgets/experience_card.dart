@@ -3,8 +3,12 @@ import 'package:resume_app/misc/app_colors.dart';
 import 'package:resume_app/models/experience_model.dart';
 import 'package:resume_app/widgets/app_text.dart';
 
+///  The Widget for users' experiences/projects
 class ExperienceCard extends StatelessWidget {
+  /// The [ExperienceModel] containing the required details. See [ExperienceModel] class
   final ExperienceModel model;
+
+  /// Anything to be added at the bottom of the card, Usually the a Widget for showing the currently selected card in a List
   final Widget? bottomWidget;
   const ExperienceCard(this.model, {super.key, this.bottomWidget});
   @override
@@ -34,11 +38,6 @@ class ExperienceCard extends StatelessWidget {
                       )
                     : Container(),
               ),
-              /* CircleAvatar(
-                radius: 26,
-                backgroundImage: model.image.image,
-                child: model.image == null ? Icon(Icons.add) : Container(),
-              ), */
               const SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,11 +77,3 @@ class ExperienceCard extends StatelessWidget {
     );
   }
 }
-
-/*
-SingleChildScrollView(
-            child: AppText(
-              "A Software Enthusiast with Strong passion for Video Game and Mobile Application Development. He has been in the Software field for more than 4 years. He is a Team Player with great communication skills. Outside of the Tech space, he is a Guitarist and during his spare time, he engages in 3D modelling (blender), Photo Editing/Image Manipulation (GIMP) and Music Production (FL Studio).",
-            ),
-          ),
-*/

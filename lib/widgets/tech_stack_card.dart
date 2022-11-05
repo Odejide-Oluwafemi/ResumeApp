@@ -3,14 +3,15 @@ import 'package:resume_app/misc/app_colors.dart';
 import 'package:resume_app/models/skill_model.dart';
 import 'package:resume_app/widgets/app_text.dart';
 
+/// The Widget for users' skillsets
 class TechStackCard extends StatelessWidget {
+  /// The [SkillModel] containing the required details. See [SkillModel] class
   final SkillModel model;
 
   const TechStackCard(this.model, {super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      //height: 500,
       child: Wrap(
         alignment: WrapAlignment.center,
         runAlignment: WrapAlignment.spaceEvenly,
@@ -26,11 +27,6 @@ class TechStackCard extends StatelessWidget {
               ),
             ),
           ),
-          /* CircleAvatar(
-            radius: 25,
-            backgroundImage: AssetImage(model.imagePath,),
-
-          ), */
           Divider(
             color: AppColors.appColor,
             thickness: 2.7,
@@ -41,7 +37,6 @@ class TechStackCard extends StatelessWidget {
           AppText(
             model.name,
             color: Colors.black87,
-            size: 12,
           ),
         ],
       ),

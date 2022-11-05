@@ -1,3 +1,4 @@
+/// Holds the Users' Contact Information
 class ContactModel {
   final String name;
   final String? imagePath;

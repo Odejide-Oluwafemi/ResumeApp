@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:resume_app/misc/config.dart';
 import 'package:resume_app/widgets/main_text.dart';
+import 'package:resume_app/widgets/scroll_arrow.dart';
+import 'package:resume_app/widgets/user_image.dart';
 
+/// A Summary of the Users' Profile
 class OverviewPage extends StatelessWidget {
+  /// Users' Image Path
   final String? profileImagePath;
+
+  /// Users; Job Title
   final String jobTitle;
+
+  /// Users' Last Name
   final String lastName;
+
+  /// Users' First Name
   final String firstName;
 
   const OverviewPage({
@@ -19,12 +29,10 @@ class OverviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // AppBar
       appBar: AppBar(
-        // toolbarHeight: 30,
         centerTitle: true,
         elevation: 0,
-        //backgroundColor:
-        //currentTheme.inDarkMode() ? Colors.black : AppColors.appColor,
         title: const Padding(
           padding: EdgeInsets.all(8.0),
           child: MainText(
@@ -32,7 +40,9 @@ class OverviewPage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        // Right Side of [AppBar]
         actions: [
+          // Theme Switch button
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
@@ -58,20 +68,14 @@ class OverviewPage extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  maxRadius: MediaQuery.of(context).orientation ==
+                UserImage(
+                  profileImagePath: profileImagePath,
+                  startSize: 20,
+                  endSize: MediaQuery.of(context).orientation ==
                               Orientation.landscape ||
                           MediaQuery.of(context).size.width > 720
-                      ? 70
-                      : 130,
-                  backgroundImage: AssetImage(profileImagePath!),
-                  child: profileImagePath != null
-                      ? Container()
-                      : const Icon(
-                          Icons.person,
-                          size: 90,
-                          color: Colors.white,
-                        ),
+                      ? 120
+                      : 160,
                 ),
                 const SizedBox(height: 15),
                 MainText(
@@ -93,45 +97,8 @@ class OverviewPage extends StatelessWidget {
             //BOTTOM ARROW
             MediaQuery.of(context).orientation == Orientation.landscape
                 ? Container()
-                : Container(
-                    width: 36,
-                    height: 80,
-                    alignment: Alignment.topCenter,
-                    child: Stack(
-                      alignment: Alignment.topCenter,
-                      children: [
-                        const Positioned(
-                          child: Text(
-                            '^',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 50,
-                            ),
-                          ),
-                        ),
-                        const Positioned(
-                          top: 16,
-                          child: Text(
-                            '^',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 42,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 40,
-                          child: Container(
-                            width: 6,
-                            height: 6,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                : const SizedBox(
+                    child: ScrollArrow(),
                   ),
           ],
         ),

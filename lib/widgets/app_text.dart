@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// A Simple Text with adjustable theming for normal Texts
 class AppText extends StatelessWidget {
   final String text;
   final double size;
