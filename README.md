@@ -16,7 +16,7 @@ With more time, would have Implemented:
   General Improvement on the UI and feel with more cooked Animations.
  
 APK download link: https://drive.google.com/file/d/1-5dDaI--cch9n8rFIYF1utuSze6V_zwa/view?usp=drivesdk
-Apeetizeio link:
+Apetize_io link: https://appetize.io/app/ddltynwladksudbxamrazzl2sm
 
 2022, ElyteTechnologies.
 
